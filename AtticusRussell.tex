@@ -22,15 +22,12 @@
 \usepackage{fancyhdr}
 \usepackage{datetime2}
 %----------------------------
-
 \hypersetup{colorlinks=false,}
 
 %----SECTION-FORMATTING-----
 \titleformat{\section}{
-\vspace{-10pt}\raggedright\large
-}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
-
-
+    \vspace{-12pt}\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-6pt}]
 %---------------------------
 
 %--------FONT-SETUP---------
@@ -67,66 +64,93 @@
 \addtolength{\evensidemargin}{-0.375in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.75in}
-\addtolength{\textheight}{1in} 
+\addtolength{\textheight}{1.3in} 
 %---------------------------
 
 %--------NEW-COMMANDS-------
 %Creates tab command that tabs the text over the argument amount
-  \newcommand{\tab}{\hspace*{.3cm}}
+\newcommand{\tab}{\hspace*{.3cm}}
 %Accents Subsection Headings and List Item Titles
-  \renewcommand{\accent}[1]{\textbf{\textcolor{MidnightBlue}{#1}}}
+ \renewcommand{\accent}[1]{\textbf{\textcolor{MidnightBlue}{#1}}}
 % Column Type for Ragged Left
   \newcolumntype{L}{>{\raggedleft\arraybackslash}X}
   \newcolumntype{R}{>{\raggedright\arraybackslash}X}
 %Resume Subsection-Takes 5 Arguments [optional:link]{Title}{Location}{Description}{Duration}
   \newcommand{\resumeSubsection}[5][]{
     \item[]
-    \begin{tabularx}{1\textwidth}{p{5.5in}L}
-        \hspace{-.5cm}\accent{#2}\hspace{.25cm}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3} \\
-        \small\robotoLight{#4} & \robotoLight{\mbox{#5}}
-      \end{tabularx}
-  }
-% Resume Subsection for one company with multiple positions
-% Takes 9 Arguments [optional:link]{Company}{Location}{Title1}{Duration1}{Description1}{Title2}{Duration2}{Description2}
-  \newcommand{\resumeSubsectionOneCompanyTwoRoles}[9][]{
-    \item[]
       \begin{tabularx}{1\textwidth}{p{5.5in}L}
-      \accent{#2:}\hspace{.25cm}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3} \\
-        \hspace{.25cm}\accent{#4}  & \robotoLight{\mbox{#5}} \\[-0.3cm]
-        \small\robotoLight{#6} \\[-0.3cm]
-        \hspace{.25cm}\accent{#7}  & \robotoLight{\mbox{#8}} \\[-0.3cm]
-        \small\robotoLight{#9}
+        \accent{#2}\hspace{.25cm}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3} \\
+        \small\robotoLight{
+            \vspace{-0.3cm}
+            \begin{itemize}
+                #4
+            \end{itemize}
+        } & \robotoLight{\mbox{#5}}
       \end{tabularx}
+  \vspace{-0.5cm}
   }
+%Resume Subsection-Takes 5 Arguments [optional:link]{Title}{Location}{Description}{Duration}
+\newcommand{\resumeSubsectionNoIndent}[5][]{
+    \item[]
+    \begin{tabularx}{1\textwidth}{p{5.5in}L}
+    \hspace{-.5cm}\accent{#2}\hspace{.25cm}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3} \\
+        \small\robotoLight{
+            \vspace{-0.3cm}
+            \begin{itemize}
+                #4
+            \end{itemize}
+        } & \robotoLight{\mbox{#5}}
+      \end{tabularx}
+      \vspace{-0.5cm}
+}
+%Resume Subsection-Takes 5 Arguments [optional:link]{Title}{Location}{Description}{Duration}{RelevantCourses}
+  \newcommand{\resumeEducation}[6][]{
+    \item[]
+    \begin{tabularx}{1\textwidth}{p{5.5in}L}
+    \accent{#2}\hspace{.25cm}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3} \\
+    \small\robotoLight{ #4} & \robotoLight{\mbox{#5}}
+    \end{tabularx}
+    \small\robotoLight{
+        % \begin{itemize}
+            #6
+        % \end{itemize}
+    }
+  }
+
 % Company with location
 % Takes 2 Arguments [optional:link]{Company}{Location}
 \newcommand{\companyWLoc}[3][]{
-    \item[]
+    % \item[]
       \begin{tabularx}{1\textwidth}{p{5.5in}L}
         \hspace{-.5cm}\accent{#2:}\footnotesize\robotoLight{\href{https://#1}{#1}} & \mbox{#3}
       \end{tabularx}
   }
 % position (goes under seperate company call) takes 3 arguments {Title}{Duration}{Description}
 \newcommand{\role}[3]{
-    \item[]
       \begin{tabularx}{1\textwidth}{p{5.5in}L}
         \accent{#1}  \\[-0.3cm]
-        \small\robotoLight{#3} & \robotoLight{\mbox{#2}}
+        \small\robotoLight{
+        \begin{itemize}
+            #3
+        \end{itemize}
+        } & \robotoLight{\mbox{#2}}
       \end{tabularx}
-      \vspace{-0.5cm}
+    \vspace{-0.5cm}
   }
 
 % position occupied twice (goes under seperate company call) takes 4 arguments {Title}{Duration1}{Duration2}{Description}
 \newcommand{\roleDouble}[4]{
     \item[]
       \begin{tabularx}{1\textwidth}{p{5.5in}L}
-        \accent{#1} & \robotoLight{\mbox{#2}} \\[-0.3cm]
-        \small\robotoLight{#4} & \vspace{0.1cm}\robotoLight{\mbox{#3}} 
+        \accent{#1} & \robotoLight{\mbox{#2}} \\[-0.3cm] 
+        \small\robotoLight{
+            \begin{itemize}
+                #4
+            \end{itemize} 
+        } & \vspace{0.1cm}\robotoLight{\mbox{#3}} 
       \end{tabularx}
       \vspace{-0.5cm}
 }
-
-
 
 %Project Items-Takes 4 arguments {Title}{Language}{github}{Description}
   \newcommand{\project}[5]{
@@ -138,103 +162,156 @@
   }
 %Resume Listed Item-Takes 2 arguments {Title}{Description}
   \newcommand{\resumeItem}[2]{\item{\accent{#1}: \robotoLight{#2}}}
+  \newcommand{\resumeItemNoColon}[2]{\item{\accent{#1} \robotoLight{#2}}}  
+%Resume Listed Item-Takes 2 arguments {Title}{Description}
+  \newcommand{\resumeItemNoBullet}[2]{\item[]{\accent{#1}: \robotoLight{#2}}}
+  
+%% Company with location
+% Resume listed item with date. Takes 3 Arguments {Title}{Description}{Date}
+\newcommand{\organization}[3]{
+    \item[]
+    \begin{tabularx}{1\textwidth}{p{5.5in}L}\accent{#1} \small\robotoLight{#2} & \robotoLight{\mbox{#3}}
+    \end{tabularx}
+    \vspace{-0.5cm}
+}
+
 %Commands for List Environment
   \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}    
   \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 
-
+\newcommand{\skillsListStart}{\begin{itemize}}    
+\newcommand{\skillsListEnd}{\end{itemize}}
   %---------------------------
 
     \pagestyle{fancy} % use the fancyheader package on the page
     \fancyhf{} % clear existing header and footer entries
     \rfoot{\tiny{\accent{Last Updated: \today}}}
 
-  \renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\labelitemiii}{\(\bullet\)}
+
 \setlist{nosep}
 \begin{document}
 %------------HEADER---------
 \begin{center}
   \begin{minipage}{0.33\textwidth}
-    \accent{\huge{Atticus Russell}} \\
-    US Citizen
+    \vspace{-10pt}
+    \accent{\huge{Atticus Russell}} 
   \end{minipage}
   \begin{minipage}[b]{0.33\textwidth}
     \centering
-    \href{mailto:atticusrussell@gmail.com}{atticusrussell@gmail.com}\\
-    (413) 455-9108
+    %  % TODO make my github look good publicly and then include it
+    \phantom{U.S. Citizen} \\
+    \phantom{\href{https://github.com/atticusrussell}{github.com/AtticusRussell}}
   \end{minipage}
   \begin{minipage}[b]{0.33\textwidth}
     \raggedleft
-    %  % TODO make my github look good publicly and then include it
-    \href{https://github.com/atticusrussell}{github.com/AtticusRussell}\\ \phantom{\href{}{}}
+    \href{mailto:atticusrussell@gmail.com}{atticusrussell@gmail.com}\\
+    (413) 455-9108
   \end{minipage}
 \end{center}
-% \hspace{-7pt}
-\robotoMed{Seeking full time employment as a computer engineer, Starting August 2023.}
+\vspace{-10pt}
 
-% \fancyhead[L]{\accent{\huge{Atticus Russell}} \\ US Citizen}
-% \fancyhead[R]{\href{mailto:atticusrussell@gmail.com}{atticusrussell@gmail.com}\\(413) 455-9108}
-% \setlength{\headheight}{50pt}
-% \setlength{\footskip}{30pt}
+\robotoMed\large\noindent{Experienced computer engineer highly motivated to contribute in a team development environment. Strong interest and ability in software and firmware development for robotic systems.}
+%---------------------------
+
+%--------EDUCATION----------
+\section{Education}
+\resumeSubHeadingListStart
+    \resumeEducation{Rochester Institute of Technology}{Rochester, NY}
+    {Bachelor of Science: Computer Engineering \newline
+    GPA: 3.31  \hspace{0.2cm} \href{https://meritpages.com/atticusrussell}{Dean's List}: Spring '22, Spring '20}{Expected May '23}
+    {
+    \phantom{A}Relevant Coursework:
+    \begin{itemize}
+        \resumeItem{Applied Programming in C (CMPE-380)}{Became proficient in C programming in the Linux environment}
+        \resumeItem {Intro to Software Engineering (SWEN-261)}{Became proficient developing Java code in an Agile team environment}
+    \end{itemize}
+    }
+\resumeSubHeadingListEnd
+%---------------------------
+\vspace{-0.3cm}
+%------SKILLS---------------
+\section{Skills}
+\skillsListStart
+    \resumeItem{Languages}{C, Python, VHDL, Matlab,  Arm Assembly,
+      \LaTeX\xspace, Bash, Java}
+    \resumeItem{Tools}{GNU/Linux environment, ROS2, Git, ModelSim, Xilinx Vivado, Altium, CAD}
+    \resumeItem{Technical}{Debugging, troubleshooting, soldering}
+    \resumeItem{Professional Skills}{Presentations, Scrum Agile framework}
+    \resumeItemNoColon{Extremely proficient in identifying existing open-source code to reduce development time}{}
+\skillsListEnd
 %---------------------------
 
 %------WORK-EXP-------------
 \section{Work Experience}
 \resumeSubHeadingListStart
-\resumeSubsection{\href{https://vanteon.com}{Vanteon Corporation}: Electrical Engineering Co-op}{Pittsford, NY}{
-  \vspace{-0.3cm}
-  \begin{itemize}
-    \item Improved RF loopback testing for Vanteon's SDR platform through automation
-    \begin{itemize}
-    \item Overhauled Matlab script for characterization and graphing of loopback test data.
-    \item Wrote C code controlling SDR test menu system, integrated with Matlab script for automatic data collection.
-    \item Designed PCB in Altium to speed up switching RF filters during loopback testing.
-    \end{itemize}
-    \item Fabricated and assembled display system for customer demonstration.
-  \end{itemize}
-}{Aug. '21 - Dec. '21}
-\vspace{-0.5cm}
-
-\companyWLoc{\href{https://www.fdsonics.com}{FloDesign Sonics}}{Wilbraham, MA}
-\role{Electronics Team Intern}{Jun. '21 - Aug. '21}{
-    \begin{itemize}
-        \item Integrated external API into prototype electronic component inventory system
-    \end{itemize}
-}
-\role{Research and Development Intern}{Jun. '20 - Aug. '20}{
-    \begin{itemize}
-        \item Developed system to image ultrasonic standing waves using Schlieren imaging with pulsed laser illumination
-    \end{itemize}
-}
-\role{Product Development Intern}{May '19 - Aug. '19}{
-    \begin{itemize}
-        \item Worked on acoustic filtration system for biopharmaceutical applications
+    \resumeSubsectionNoIndent{\href{https://vanteon.com}{Vanteon Corporation}: Electrical Engineering Co-op}{Pittsford, NY}{
+        \item Improved RF loopback testing for Vanteon's SDR platform through automation
         \begin{itemize}
-            \item Used SolidWorks to create parts, assemblies, and drawings
-            \item Created set of formal work instructions for manufacturing transducers
+            \item Overhauled Matlab script for test data characterization
+            \item Wrote C code controlling SDR test menu system, integrated with Matlab script for automatic data collection
+            \item Designed PCB in Altium to expedite switching RF filters during testing
         \end{itemize}
-    \end{itemize}
-}
-\roleDouble{Research and Development Intern}{Jun. '18 - Aug. '18} {Jun. '17 - Nov. '17}{
-\begin{itemize}
-    \item Conducted tests of acoustic filtration technology and collected data.
-    \item Designed and assembled custom computer, upgraded older computers.
-    \item Prototyped improvements to product using CAD and 3D printing.
-    \item Presented findings and future goals weekly to a panel of managers and other interns
- \end{itemize}
-}
+        \item Fabricated and assembled display system for customer demonstration
+    }{Aug.—Dec. '21}
 
+    \companyWLoc{\href{https://www.fdsonics.com}{FloDesign Sonics}}{Wilbraham, MA}
+    \role{Electronics Team Intern}{Jun.—Aug. '21}{
+        \item Integrated external API into prototype electronic component inventory system
+        \vspace{-0.5cm}
+    }
+    \vspace{0.5cm}
+    \hspace{-0.32em}\role{Research and Development Intern}{Jun.—Aug. '20}{
+    \item Developed system to image ultrasonic standing waves using Schlieren imaging with pulsed laser illumination
+    }
+    
+    \role{Product Development Intern}{May—Aug. '19}{
+        \item Used CAD to create parts, assemblies, and drawings for acoustic filtration system
+        \item Created formal work instructions for manufacturing transducers
+    }
+    \roleDouble{Research and Development Intern}{Jun.—Aug. '18} {Jun.—Nov. '17}{
+        \item Conducted tests of acoustic filtration technology and collected performance data
+        \item Prototyped improvements using CAD and 3D printing
+        \item Regularly presented progress towards project milestones to management and staff
+    }
 \resumeSubHeadingListEnd
 %---------------------------
-%--------EDUCATION----------
-\section{Education}
+\vspace{-4pt}
+%-------PROJECTS------------
+\section{Projects}
 \resumeSubHeadingListStart
-\resumeSubsection
-{Rochester Institute of Technology}{Rochester, NY}
-{Bachelor of Science: Computer Engineering \newline
-  GPA: 3.31 -
-  \href{https://meritpages.com/atticusrussell}{Dean's List}: Spring
-  '22, Spring '20
+    \resumeSubsection{Autonomous Boat to Seek Radio Beacon}{ROS, Python}{
+        \item Designed autonomous boat to seek radio beacon for NASA SAVER competition
+        \item Worked with multidisciplinary team of engineers in Scrum collaboration environment
+}{Aug. '22—present}
+    \resumeSubsection{Small Scale Autonomous Racecar}{Embedded C}{
+            \item Created firmware for autonomous racing vehicle using ARM-based microcontroller
+            \item Wrote state-based control system to navigate an unknown track in a timed race
+    }{Aug.—Dec. '22}
+
+    \resumeSubsection{Pipelined MIPS Processor}{VHDL}{
+            \item Created and tested each stage of a pipelined MIPS processor with VHDL
+            % \item Combined each stage in the pipeline and simulated using ModelSim
+            \item Tested overall functionality by calculating a
+                  portion of the Fibonacci sequence
+            \item Experimentally found the fastest clock frequency
+                  at which the processor could operate
+    }{Jan.—May '22}
+\resumeSubHeadingListEnd
+%---------------------------
+\vspace{-0.3cm}
+
+%-----Organizations---------
+\section{Extracurricular and Personal}
+\resumeSubHeadingListStart
+    \organization{Phi Delta Theta}{New York Eta Chapter}{Oct. '21—present}
+    \organization{Interests:}{Cars, audio, rugby, wrestling}{\phantom{a}}
+    \organization{U.S. Citizen}{\phantom{a}}{\phantom{a}}
+\resumeSubHeadingListEnd
+%---------------------------
+\end{document}
+
   % \newline Relevant Coursework:
   % \begin{itemize}
   %   \resumeItem{Reconfigurable Computing (CMPE-660)}{Learned
@@ -252,83 +329,15 @@
   %   %   in a team with other software developers, in an Agile
   %   %   work environment.}
   % \end{itemize}}
-  }{Expected May '23}
-\resumeSubHeadingListEnd
-%---------------------------
-
-%------SKILLS---------------
-% \vspace{-0.7cm}
-\section{Skills}
-\resumeSubHeadingListStart
-\resumeItem{Languages}{C, Python, VHDL, Matlab,  Arm Assembly,
-  \LaTeX\xspace, Bash, Java}
-\resumeItem{Tools}{GNU/Linux environment, ROS2, Git, ModelSim, Xilinx Vivado, Altium, CAD}
-% \resumeItem{Hardware}{FPGA Design targeting Stratix-10, MAX-10 and Artix-7. Clock Domain crossing.}
-\resumeItem{Technical}{Debugging, Troubleshooting, Soldering, Software Development}
-\resumeItem{Professional Skills}{Presentations, Agile Software Collaboration}
-\resumeSubHeadingListEnd
 %---------------------------
 
 
-%-------PROJECTS------------
-\section{Projects}
-\resumeSubHeadingListStart
-\resumeSubsection
-{Small Scale Autonomous Race Car}{Embedded C}
-{
-  \vspace{-0.3cm}
-  \begin{itemize}
-    \item Created firmware for small autonomous racing vehicle, controlled by TI MSP432 ARM-based microcontroller.
-    \item Using Line scan camera, wrote PID and state-based control system to quickly navigate a randomly designed track in a timed race.
-  \end{itemize}
-}{Aug. - Dec. '22}
-
-\vspace{-0.5cm}
-\resumeSubsection
-{Pipelined MIPS Processor}{VHDL}
-{
-  \vspace{-0.3cm}
-  \begin{itemize}
-    \item Created and tested each stage of a MIPS
-          processor with VHDL
-    \item Combined each stage in the pipeline and simulated using ModelSim
-    \item Tested overall functionality by calculating a
-          portion of the Fibonacci sequence.
-    \item Experimentally found the fastest clock frequency
-          at which the processor could operate.
-  \end{itemize}
-}{Jan. - May '22}
-\vspace{-0.7cm}
-% \resumeSubsection
-%   Pipelined the stages, and designed overall processor,
-%   targeting Xilinx Artix-7 FPGA. The functionality of the
-%   design as a whole was tested by calculating a portion of
-%   the Fibonacci sequence.}{January - May '19}
-
-% \resumeSubsection
-%   {Small Scale Autonomous Race Car}{Embedded C}
-%   {Using a NXP/Freescale FRDM-K64 Embedded Development
-%   board, myself and a partner assembled and programmed an
-%   autonomous race car to compete in RIT's IDE Cup. Used
-%   embedded C to design to interface with a line scan
-%   camera to control motors and servos to quickly traverse
-%   a randomly designed track. }{August - December '20}
 % \resumeSubsection
 %   {Personal Homelab}{Server Hardware}
 %   {For the last five years, I have maintained a personal
 %   homelab of server hardware. This homelab is used to
 %   learn about various server hardware and services, including
-%   Proxmox, Docker and PFSense.}{July 2017 - Present}
-
-\resumeSubHeadingListEnd
-%---------------------------
+%   Proxmox, Docker and PFSense.}{July 2017—Present}
 
 
-%-----Organizations---------
-\section{Organizations}
-\resumeSubHeadingListStart
-\resumeItem{Phi Delta Theta}{New York Eta Chapter. Active October '21 - May '23}
-\resumeSubHeadingListEnd
-%---------------------------
 
-\end{document}
