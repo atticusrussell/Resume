@@ -71,7 +71,7 @@
 %Creates tab command that tabs the text over the argument amount
 \newcommand{\tab}{\hspace*{.3cm}}
 %Accents Subsection Headings and List Item Titles
-  \renewcommand{\accent}[1]{\textbf{\textcolor{MidnightBlue}{#1}}}
+ \renewcommand{\accent}[1]{\textbf{\textcolor{MidnightBlue}{#1}}}
 % Column Type for Ragged Left
   \newcolumntype{L}{>{\raggedleft\arraybackslash}X}
   \newcolumntype{R}{>{\raggedright\arraybackslash}X}
@@ -170,7 +170,7 @@
 % Resume listed item with date. Takes 3 Arguments {Title}{Description}{Date}
 \newcommand{\organization}[3]{
     \item[]
-    \begin{tabularx}{1\textwidth}{p{5.5in}L}\accent{#1:} \small\robotoLight{#2} & \robotoLight{\mbox{#3}}
+    \begin{tabularx}{1\textwidth}{p{5.5in}L}\accent{#1} \small\robotoLight{#2} & \robotoLight{\mbox{#3}}
     \end{tabularx}
     \vspace{-0.5cm}
 }
@@ -201,7 +201,7 @@
   \begin{minipage}[b]{0.33\textwidth}
     \centering
     %  % TODO make my github look good publicly and then include it
-    U.S. Citizen \\
+    \phantom{U.S. Citizen} \\
     \phantom{\href{https://github.com/atticusrussell}{github.com/AtticusRussell}}
   \end{minipage}
   \begin{minipage}[b]{0.33\textwidth}
@@ -220,12 +220,12 @@
 \resumeSubHeadingListStart
     \resumeEducation{Rochester Institute of Technology}{Rochester, NY}
     {Bachelor of Science: Computer Engineering \newline
-    GPA: 3.31 - \href{https://meritpages.com/atticusrussell}{Dean's List}: Spring '22, Spring '20}{Expected May '23}
+    GPA: 3.31  \hspace{0.2cm} \href{https://meritpages.com/atticusrussell}{Dean's List}: Spring '22, Spring '20}{Expected May '23}
     {
     \phantom{A}Relevant Coursework:
     \begin{itemize}
-        \resumeItem{Applied Programming in C (CMPE-380)}{Learned C programming in the Linux environment}
-        \resumeItem {Intro to Software Engineering (SWEN-261)}{Developed and practiced the ability to work using Java in a team with other software developers, in an Agile work environment}
+        \resumeItem{Applied Programming in C (CMPE-380)}{Became proficient in C programming in the Linux environment}
+        \resumeItem {Intro to Software Engineering (SWEN-261)}{Became proficient developing Java code in an Agile team environment}
     \end{itemize}
     }
 \resumeSubHeadingListEnd
@@ -237,8 +237,8 @@
     \resumeItem{Languages}{C, Python, VHDL, Matlab,  Arm Assembly,
       \LaTeX\xspace, Bash, Java}
     \resumeItem{Tools}{GNU/Linux environment, ROS2, Git, ModelSim, Xilinx Vivado, Altium, CAD}
-    \resumeItem{Technical}{Debugging, Troubleshooting, Soldering}
-    \resumeItem{Professional Skills}{Presentations, Scrum Agile Framework}
+    \resumeItem{Technical}{Debugging, troubleshooting, soldering}
+    \resumeItem{Professional Skills}{Presentations, Scrum Agile framework}
     \resumeItemNoColon{Extremely proficient in identifying existing open-source code to reduce development time}{}
 \skillsListEnd
 %---------------------------
@@ -249,28 +249,28 @@
     \resumeSubsectionNoIndent{\href{https://vanteon.com}{Vanteon Corporation}: Electrical Engineering Co-op}{Pittsford, NY}{
         \item Improved RF loopback testing for Vanteon's SDR platform through automation
         \begin{itemize}
-            \item Overhauled Matlab script for characterization of test data
+            \item Overhauled Matlab script for test data characterization
             \item Wrote C code controlling SDR test menu system, integrated with Matlab script for automatic data collection
             \item Designed PCB in Altium to expedite switching RF filters during testing
         \end{itemize}
         \item Fabricated and assembled display system for customer demonstration
-    }{Aug. '21 - Dec. '21}
+    }{Aug.—Dec. '21}
 
     \companyWLoc{\href{https://www.fdsonics.com}{FloDesign Sonics}}{Wilbraham, MA}
-    \role{Electronics Team Intern}{Jun. '21 - Aug. '21}{
+    \role{Electronics Team Intern}{Jun.—Aug. '21}{
         \item Integrated external API into prototype electronic component inventory system
         \vspace{-0.5cm}
     }
     \vspace{0.5cm}
-    \role{Research and Development Intern}{Jun. '20 - Aug. '20}{
-        \item Developed system to image ultrasonic standing waves using Schlieren imaging with pulsed laser illumination
+    \hspace{-0.32em}\role{Research and Development Intern}{Jun.—Aug. '20}{
+    \item Developed system to image ultrasonic standing waves using Schlieren imaging with pulsed laser illumination
     }
     
-    \role{Product Development Intern}{May '19 - Aug. '19}{
+    \role{Product Development Intern}{May—Aug. '19}{
         \item Used CAD to create parts, assemblies, and drawings for acoustic filtration system
         \item Created formal work instructions for manufacturing transducers
     }
-    \roleDouble{Research and Development Intern}{Jun. '18 - Aug. '18} {Jun. '17 - Nov. '17}{
+    \roleDouble{Research and Development Intern}{Jun.—Aug. '18} {Jun.—Nov. '17}{
         \item Conducted tests of acoustic filtration technology and collected performance data
         \item Prototyped improvements using CAD and 3D printing
         \item Regularly presented progress towards project milestones to management and staff
@@ -281,32 +281,33 @@
 %-------PROJECTS------------
 \section{Projects}
 \resumeSubHeadingListStart
-    \resumeSubsection{Autonomous Boat To Seek Radio Beacon}{ROS, Python}{
+    \resumeSubsection{Autonomous Boat to Seek Radio Beacon}{ROS, Python}{
         \item Designed autonomous boat to seek radio beacon for NASA SAVER competition
         \item Worked with multidisciplinary team of engineers in Scrum collaboration environment
-}{Aug. '22 - Present}
-    \resumeSubsection{Small Scale Autonomous Race Car}{Embedded C}{
+}{Aug. '22—present}
+    \resumeSubsection{Small Scale Autonomous Racecar}{Embedded C}{
             \item Created firmware for autonomous racing vehicle using ARM-based microcontroller
-            \item Wrote state-based control system to navigate an unknown track in a timed race.
-    }{Aug. - Dec. '22}
+            \item Wrote state-based control system to navigate an unknown track in a timed race
+    }{Aug.—Dec. '22}
 
     \resumeSubsection{Pipelined MIPS Processor}{VHDL}{
             \item Created and tested each stage of a pipelined MIPS processor with VHDL
             % \item Combined each stage in the pipeline and simulated using ModelSim
             \item Tested overall functionality by calculating a
-                  portion of the Fibonacci sequence.
+                  portion of the Fibonacci sequence
             \item Experimentally found the fastest clock frequency
-                  at which the processor could operate.
-    }{Jan. - May '22}
+                  at which the processor could operate
+    }{Jan.—May '22}
 \resumeSubHeadingListEnd
 %---------------------------
 \vspace{-0.3cm}
 
 %-----Organizations---------
-\section{Extracurricular}
+\section{Extracurricular and Personal}
 \resumeSubHeadingListStart
-    \organization{Phi Delta Theta}{New York Eta Chapter}{Oct. '21 - Present}
-    \organization{Interests}{cars, audio, rugby, wrestling}{\phantom{a}}
+    \organization{Phi Delta Theta}{New York Eta Chapter}{Oct. '21—present}
+    \organization{Interests:}{Cars, audio, rugby, wrestling}{\phantom{a}}
+    \organization{U.S. Citizen}{\phantom{a}}{\phantom{a}}
 \resumeSubHeadingListEnd
 %---------------------------
 \end{document}
@@ -336,7 +337,7 @@
 %   {For the last five years, I have maintained a personal
 %   homelab of server hardware. This homelab is used to
 %   learn about various server hardware and services, including
-%   Proxmox, Docker and PFSense.}{July 2017 - Present}
+%   Proxmox, Docker and PFSense.}{July 2017—Present}
 
 
 
