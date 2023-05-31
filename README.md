@@ -19,5 +19,5 @@ sudo dnf install texlive-full
 sudo pacman -S texlive-core texlive-fontsextra
 ```
 
-I personally use [Vimtex](https://github.com/lervag/vimtex) which uses Latexmk for compilation. In order to use latexmk, you must pass in the `--xelatex` option. Otherwise, you can compile with just `xelatex SethGower.tex`. 
+I personally use [Vimtex](https://github.com/lervag/vimtex) which uses Latexmk for compilation. In order to use latexmk, you must pass in the `--xelatex` option. Otherwise, you can compile with just `xelatex FirstLast.tex`. 
 
